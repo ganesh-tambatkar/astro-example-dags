@@ -15,17 +15,26 @@ conn = Connection(
     },
 )
 
-print("conn =>", conn)
-
 env_key = f"AIRFLOW_CONN_{conn.conn_id.upper()}"
 conn_uri = conn.get_uri()
 os.environ[env_key] = conn_uri
-print("conn_uri =>", conn_uri)
+
+def print_conn():
+    print("conn =>", conn)
+    print("conn_uri =>", conn_uri)
+    return conn, conn_uri
 
 with DAG(
     dag_id="s3", schedule="@once", start_date=datetime(2023, 1, 1), is_paused_upon_creation=False, catchup=False
 ) as dag:
-    S3FileTransformOperator(
+
+    task_1 = PythonOperator(
+            task_id='print_conn',
+            python_callable=print_conn,
+            doc_md=""" print_conn """
+        )
+    
+    task_2 = S3FileTransformOperator(
         task_id="s3transform",
         source_s3_key="s3://astro-demos-sample-data/countries.csv",
         source_aws_conn_id=conn.conn_id,
@@ -33,3 +42,5 @@ with DAG(
         dest_aws_conn_id=conn.conn_id,
         dest_s3_key=f"s3://astro-demos-sample-data/uploads/{time_ns()}/europian_countries.csv",
     )
+
+    task_1 >> task_2
