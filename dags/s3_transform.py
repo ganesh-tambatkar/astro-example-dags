@@ -4,6 +4,7 @@ from airflow.models.connection import Connection
 from time import time_ns
 from datetime import datetime
 import os
+from airflow.operators.python_operator import PythonOperator
 
 conn = Connection(
     conn_id="aws_demo",
