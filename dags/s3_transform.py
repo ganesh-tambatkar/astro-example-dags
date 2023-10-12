@@ -15,6 +15,8 @@ conn = Connection(
     },
 )
 
+print("conn =>", conn)
+
 env_key = f"AIRFLOW_CONN_{conn.conn_id.upper()}"
 conn_uri = conn.get_uri()
 os.environ[env_key] = conn_uri
