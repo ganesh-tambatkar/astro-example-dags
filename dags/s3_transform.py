@@ -23,7 +23,6 @@ os.environ[env_key] = conn_uri
 def print_conn():
     print("conn =>", conn)
     print("conn_uri =>", conn_uri)
-    return conn, conn_uri
 
 with DAG(
     dag_id="s3", schedule="@once", start_date=datetime(2023, 1, 1), is_paused_upon_creation=False, catchup=False
