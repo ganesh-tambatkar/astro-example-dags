@@ -29,6 +29,14 @@ with DAG(
     dag_id="s3", schedule="@once", start_date=datetime(2023, 1, 1), is_paused_upon_creation=False, catchup=False
 ) as dag:
 
+    s3_file = S3ListOperator(
+        task_id='list_3s_files',
+        bucket='aws-cloudtrail-logs-493179717493-0fc50be1',
+        prefix='AWSLogs/493179717493/CloudTrail-Digest/af-south-1/2023/06/02/',
+        delimiter='/',
+        aws_conn_id='aws_conn'
+    )
+
     task_1 = PythonOperator(
             task_id='print_conn',
             python_callable=print_conn,
@@ -44,4 +52,4 @@ with DAG(
         dest_s3_key=f"s3://astro-demos-sample-data/uploads/{time_ns()}/europian_countries.csv",
     )
 
-    task_1 >> task_2
+    s3_file >> task_1 >> task_2
