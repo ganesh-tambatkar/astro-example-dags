@@ -1,10 +1,10 @@
-from airflow.providers.amazon.aws.operators.s3 import S3FileTransformOperator,S3ListOperator
+import os
 from airflow import DAG
-from airflow.models.connection import Connection
 from time import time_ns
 from datetime import datetime
-import os
+from airflow.models.connection import Connection
 from airflow.operators.python_operator import PythonOperator
+from airflow.providers.amazon.aws.operators.s3 import S3FileTransformOperator,S3ListOperator
 
 conn = Connection(
     conn_id="aws_demo",
