@@ -9,7 +9,8 @@ from airflow.operators.python_operator import PythonOperator
 def transform_file(input_file_path, ouput_file_path):
     hook = S3Hook("aws_conn")
     temp_input_file_path = hook.download_file(key = input_file_path)
-    return temp_input_file_path
+    input_df = pd.read_csv(temp_input_file_path)
+    return input_df
 
 with DAG(
     dag_id="s3_operations_and_transformation", schedule=None, start_date=datetime(2023, 1, 1), is_paused_upon_creation=False, catchup=False
