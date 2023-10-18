@@ -41,7 +41,7 @@ with DAG(
         python_callable=transform_file,
         op_kwargs={
             "input_file_path": "s3://aws-cloudtrail-logs-493179717493-0fc50be1/temp/astro-demos-sample-data/input_file.csv",
-            "ouput_file_path":"s3://aws-cloudtrail-logs-493179717493-0fc50be1/temp/astro-demos-sample-data/input_file.csv"
+            "ouput_file_path":"s3://aws-cloudtrail-logs-493179717493-0fc50be1/temp/astro-demos-sample-data/output_file.csv"
         },
         provide_context=True,
         doc_md=""" transform_file function """
