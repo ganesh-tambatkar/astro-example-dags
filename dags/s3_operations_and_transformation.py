@@ -12,7 +12,7 @@ def transform_file(input_file_path, ouput_file_path, **kwargs):
     hook = S3Hook("aws_conn")
     temp_input_file_path = hook.download_file(key = input_file_path)
     input_df = pd.read_csv(temp_input_file_path)
-    input_df['name'] = data['name'].str.upper()
+    input_df['name'] = input_df['name'].str.upper()
     TEMP_FILE_PATH = 'temp/output_file.csv'
     input_df.to_csv(TEMP_FILE_PATH, sep=",", index=False)
     
