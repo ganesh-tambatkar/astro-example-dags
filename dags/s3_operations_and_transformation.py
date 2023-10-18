@@ -25,7 +25,7 @@ with DAG(
         op_kwargs={
             "input_file_path": "s3://aws-cloudtrail-logs-493179717493-0fc50be1/temp/astro-demos-sample-data/uploads/1697542711653719181/europian_countries.csv",
             "ouput_file_path":""
-        }
+        },
         doc_md=""" transform_file function """
     )
     
