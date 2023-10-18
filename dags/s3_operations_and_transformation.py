@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 from airflow import DAG
 from time import time_ns
 from datetime import datetime
