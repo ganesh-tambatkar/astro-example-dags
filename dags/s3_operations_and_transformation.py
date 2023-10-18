@@ -21,6 +21,7 @@ def transform_file(input_file_path, ouput_file_path, **kwargs):
         filename=TEMP_FILE_PATH,
         dest_key=ouput_file_path,
         # dest_bucket=s3_bucket_name,
+        aws_conn_id="aws_conn",
         replace=True
     )
     
