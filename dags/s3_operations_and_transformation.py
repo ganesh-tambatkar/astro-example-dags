@@ -13,7 +13,7 @@ def transform_file(input_file_path, ouput_file_path, **kwargs):
     temp_input_file_path = hook.download_file(key = input_file_path)
     input_df = pd.read_csv(temp_input_file_path)
     input_df['name'] = input_df['name'].str.upper()
-    TEMP_FILE_PATH = 'temp/output_file.csv'
+    TEMP_FILE_PATH = '/tmp/output_file.csv'
     input_df.to_csv(TEMP_FILE_PATH, sep=",", index=False)
     
     t_upload_output_file_to_s3 = LocalFilesystemToS3Operator(
