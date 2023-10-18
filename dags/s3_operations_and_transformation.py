@@ -7,7 +7,7 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 
 def transform_file(input_file_path, ouput_file_path):
-    hook = S3Hook(aws_conn)
+    hook = S3Hook("aws_conn")
     temp_input_file_path = hook.download_file(key = input_file_path)
     return temp_input_file_path
 
