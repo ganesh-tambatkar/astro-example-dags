@@ -16,13 +16,13 @@ with DAG(
     
     t_start = EmptyOperator(
         task_id='Start',
-        doc_md="""Dummy Start Task""",
-        outlets=[dataset_1]
+        doc_md="""Dummy Start Task"""
     )
 
     t_sleep = PythonOperator(
         task_id='sleep',
-        python_callable=sleep_fun
+        python_callable=sleep_fun,
+        outlets=[dataset_1]
     )
     
     t_start >> t_sleep
