@@ -14,7 +14,7 @@ with DAG(
 
     t_external_task_sensor = ExternalTaskSensor(
         task_id="parent_task_sensor",
-        external_task_id="trigger_dependent_dag",
+        external_task_id="end_task",
         external_dag_id="DAG1",
         execution_delta = timedelta(minutes=10),
         timeout=300,
