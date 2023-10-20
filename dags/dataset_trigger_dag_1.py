@@ -14,5 +14,5 @@ with DAG(
         doc_md="""Dummy Start Task""",
         outlets=[dataset_1]
     )
-
-  t_start
+    
+    t_start
