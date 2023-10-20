@@ -16,7 +16,9 @@ with DAG(
         task_id="parent_task_sensor",
         external_task_id="trigger_dependent_dag",
         external_dag_id="DAG1",
-        deferrable=True,
+        execution_delta = timedelta(minutes=10),
+        timeout=300,
+        dag=dag
     )
 
     t_end = EmptyOperator(
