@@ -10,7 +10,7 @@ def update_dag_state():
         print("dag_id =>", dag_id_)
 
 with DAG(
-    dag_id="DAG1", schedule=None, start_date=datetime(2023, 10, 25), is_paused_upon_creation=False, catchup=False
+    dag_id="mutual_exclusion_dag", schedule=None, start_date=datetime(2023, 10, 25), is_paused_upon_creation=False, catchup=False
 ) as dag:
 
     start_task = DummyOperator(task_id='start_task', dag=dag)
