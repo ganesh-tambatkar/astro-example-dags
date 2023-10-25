@@ -11,9 +11,7 @@ def update_dag_state():
     for dag_id_ in dag_bag.dag_ids:
         print("dag_id =>", dag_id_)
         
-    dag_run = DagRun.query(func.max(execution_date).label('execution_date'))
-            .group_by(dag_id)
-            .subquery()
+    dag_run = DagRun.query(func.max(execution_date).label('execution_date')).group_by(dag_id)
     print(dag_run)
     dag_runs = DagRun.find(dag_id="mutual_exclusion_dag")
     #print(dag_runs)
