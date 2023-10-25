@@ -15,8 +15,11 @@ def update_dag_state(dag_list):
     active_run_dag_id = None
     active_dag_run = DagRun.active_runs_of_dags(dag_ids = dag_list)
     for dagId in dag_list:
-        active_dag_run_count = active_dag_run[dagId]
-        print("active_dag_run_count =>", str(active_dag_run_count))
+        try:
+            active_dag_run_count = active_dag_run[dagId]
+            print("active_dag_run_count =>", str(active_dag_run_count))
+        except:
+            active_dag_run_count = 0
         if active_dag_run_count >= 1:
             active_run_dag_id = dagId
             break
