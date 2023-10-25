@@ -11,7 +11,7 @@ def update_dag_state():
     for dag_id_ in dag_bag.dag_ids:
         print("dag_id =>", dag_id_)
         
-    dag_run = DagRun.active_runs_of_dags(dag_ids = "mutual_exclusion_dag")
+    dag_run = DagRun.active_runs_of_dags(dag_ids = ["mutual_exclusion_dag"])
     print(dag_run)
     dag_runs = DagRun.find(dag_id="mutual_exclusion_dag")
     #print(dag_runs)
