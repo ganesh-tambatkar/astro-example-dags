@@ -10,9 +10,13 @@ def update_dag_state():
     dag_bag = DagBag(read_dags_from_db=False)
     for dag_id_ in dag_bag.dag_ids:
         print("dag_id =>", dag_id_)
-
+        
+    dag_run = DagRun.query(func.max(execution_date).label('execution_date'))
+            .group_by(dag_id)
+            .subquery()
+    print(dag_run)
     dag_runs = DagRun.find(dag_id="mutual_exclusion_dag")
-    print(dag_runs)
+    #print(dag_runs)
     dag_model = DagModel.get_dagmodel("DAG1")
     dag_model.set_is_paused(True)
 
