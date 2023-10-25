@@ -9,6 +9,9 @@ def update_dag_state():
     dag_bag = DagBag(read_dags_from_db=False)
     for dag_id_ in dag_bag.dag_ids:
         print("dag_id =>", dag_id_)
+
+    dag_runs = DagRun.find(dag_id="mutual_exclusion_dag")
+    print(dag_runs)
     dag_model = DagModel.get_dagmodel("DAG1")
     dag_model.set_is_paused(True)
 
@@ -20,7 +23,10 @@ with DAG(
     
     task_1 = PythonOperator(
         task_id = 'task_1',
-        python_callable = update_dag_state
+        python_callable = update_dag_state,
+        # op_kwargs={
+        #     "dag_list": ["DAG1","DAG2"]
+        # }
     )
     
     start_task >> task_1
