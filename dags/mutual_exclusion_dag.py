@@ -25,6 +25,7 @@ def update_dag_state(dag_list):
             break
 
     print("active_run_dag_id =>", active_run_dag_id)
+    print(dag_list)
     new_dag_list = dag_list.remove(active_run_dag_id)
     print(new_dag_list)
     for dagId in new_dag_list:
