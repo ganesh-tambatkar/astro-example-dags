@@ -9,7 +9,7 @@ def update_dag_state():
     dag_bag = DagBag(read_dags_from_db=False)
     for dag_id_ in dag_bag.dag_ids:
         print("dag_id =>", dag_id_)
-    dag_model = airflow.models.dag.DagModel.get_dagmodel("DAG1")
+    dag_model = DagModel.get_dagmodel("DAG1")
     dag_model.set_is_paused(True)
 
 with DAG(
