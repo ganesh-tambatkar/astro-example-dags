@@ -1,5 +1,6 @@
 from airflow import DAG
 from datetime import datetime
+from airflow.models.dag import DagModel
 from airflow.models.dagbag import DagBag
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.python_operator import PythonOperator
@@ -8,6 +9,8 @@ def update_dag_state():
     dag_bag = DagBag(read_dags_from_db=False)
     for dag_id_ in dag_bag.dag_ids:
         print("dag_id =>", dag_id_)
+    dag_model = airflow.models.dag.DagModel.get_dagmodel("DAG1")
+    dag_model.set_is_paused(True)
 
 with DAG(
     dag_id="mutual_exclusion_dag", schedule=None, start_date=datetime(2023, 10, 25), is_paused_upon_creation=False, catchup=False
