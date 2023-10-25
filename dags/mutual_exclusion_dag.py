@@ -24,7 +24,8 @@ def update_dag_state(dag_list):
             active_run_dag_id = dagId
             break
 
-    for dagId in dag_list.remove(active_run_dag_id):
+    new_dag_list = dag_list.remove(active_run_dag_id)
+    for dagId in new_dag_list:
         dag_model = DagModel.get_dagmodel(dagId)
         dag_model.set_is_paused(True)
     
