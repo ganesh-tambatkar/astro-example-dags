@@ -27,9 +27,15 @@ def update_dag_state(dag_list):
     print("active_run_dag_id =>", active_run_dag_id)
     dag_list.remove(active_run_dag_id)
     print(dag_list)
-    for dagId in dag_list:
-        dag_model = DagModel.get_dagmodel(dagId)
-        dag_model.set_is_paused(True)
+    
+    if active_run_dag_id is not None:
+        for dagId in dag_list:
+            dag_model = DagModel.get_dagmodel(dagId)
+            dag_model.set_is_paused(True)
+    else:
+        for dagId in dag_list:
+            dag_model = DagModel.get_dagmodel(dagId)
+            dag_model.set_is_paused(False)
     
     # dag_runs = DagRun.find(dag_id="mutual_exclusion_dag")
     # #print(dag_runs)
