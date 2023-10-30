@@ -25,7 +25,10 @@ def update_dag_state(dag_list):
             break
 
     print("active_run_dag_id =>", active_run_dag_id)
-    dag_list.remove(active_run_dag_id)
+    try:
+        dag_list.remove(active_run_dag_id)
+    except:
+        pass
     print(dag_list)
     
     if active_run_dag_id is not None:
