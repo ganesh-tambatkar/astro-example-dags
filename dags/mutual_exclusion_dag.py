@@ -1,5 +1,5 @@
 from airflow import DAG
-from datetime import datetime
+from datetime import datetime, timedelta
 from airflow.models.dag import DagModel
 from airflow.models.dagrun import DagRun
 from airflow.models.dagbag import DagBag
@@ -44,7 +44,7 @@ def update_dag_state(dag_list):
     # #print(dag_runs)
 
 with DAG(
-    dag_id="mutual_exclusion_dag", schedule=None, start_date=datetime(2023, 10, 25), is_paused_upon_creation=False, catchup=False
+    dag_id="mutual_exclusion_dag", schedule=timedelta(seconds=30), start_date=datetime(2023, 10, 25), is_paused_upon_creation=False, catchup=False
 ) as dag:
 
     start_task = DummyOperator(task_id='start_task', dag=dag)
