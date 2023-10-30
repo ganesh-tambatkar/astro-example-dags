@@ -53,7 +53,7 @@ with DAG(
         task_id = 'task_1',
         python_callable = update_dag_state,
         op_kwargs={
-            "dag_list": ["DAG1","DAG2","external_task_sensor_dag"]
+            "dag_list": ["s3_transform","DAG2","external_task_sensor_dag"]
         }
     )
     
