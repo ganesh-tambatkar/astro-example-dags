@@ -1,3 +1,4 @@
+import numpy
 import pandas as pd
 from airflow import DAG
 from datetime import datetime
