@@ -4,7 +4,7 @@ import requests
 import pendulum
 import pandas as pd
 from airflow import DAG
-import snowflake.connector
+import snowflake
 from datetime import datetime
 from airflow.operators.empty import EmptyOperator
 
