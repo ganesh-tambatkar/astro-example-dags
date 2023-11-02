@@ -32,8 +32,9 @@ with DAG(
 
     delete_mutual_exclusion_file_task = S3DeleteObjectsOperator(
       task_id='delete_mutual_exclusion_file',
+      bucket='aws-cloudtrail-logs-493179717493-0fc50be1',
       keys=[
-        's3://aws-cloudtrail-logs-493179717493-0fc50be1/temp/astro-demos-sample-data/mutual_exclusion_file.txt'
+        'temp/astro-demos-sample-data/mutual_exclusion_file.txt'
       ],
       aws_conn_id='aws_conn'
     )
