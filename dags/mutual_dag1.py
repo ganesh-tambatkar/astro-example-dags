@@ -2,8 +2,7 @@ from airflow import DAG
 from datetime import datetime
 from airflow.operators.dummy import DummyOperator
 from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
-from airflow.providers.amazon.aws.operators.s3 import S3CreateObjectOperator
-from airflow.providers.amazon.aws.operators.s3_delete_objects import S3DeleteObjectsOperator
+from airflow.providers.amazon.aws.operators.s3 import S3CreateObjectOperator, S3DeleteObjectsOperator
 
 with DAG(
     dag_id="mutual_dag1", schedule=None, start_date=datetime(2023, 11, 2), is_paused_upon_creation=False, catchup=False
