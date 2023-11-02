@@ -6,7 +6,7 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
 from airflow.providers.amazon.aws.operators.s3 import S3CreateObjectOperator, S3DeleteObjectsOperator
 
-def raw_to_prep_and_prep_to_red:
+def raw_to_prep_and_prep_to_red():
     time.sleep(60)
     return True
 
@@ -49,7 +49,7 @@ with DAG(
 
     raw_to_prep_and_prep_to_red_task = PythonOperator(
         task_id='raw_to_prep_and_prep_to_red_task',
-        python_callable=dag,
+        python_callable=raw_to_prep_and_prep_to_red,
     )
 
     create_mutual_exclusion_file_task = S3CreateObjectOperator(
