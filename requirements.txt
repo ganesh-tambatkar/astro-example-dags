@@ -1,2 +1,1 @@
 snowflake-connector-python
-apache-airflow-providers-apache-spark==4.3.0
