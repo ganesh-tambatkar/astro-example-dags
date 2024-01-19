@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 args = {"owner": "airflow", "start_date": airflow.utils.dates.days_ago(1)}
 
 dag = DAG(
- dag_id="Second", default_args=args, schedule_interval="32 07 * * *"
+ dag_id="second", default_args=args, schedule_interval="32 07 * * *"
 )
 def pp():
  print("Second Dependent Task")
@@ -18,7 +18,7 @@ with dag:
  Second_Task=PythonOperator(task_id="Second_Task", python_callable=pp,dag=dag)
 ExternalTaskSensor(
  task_id="Ext_Sensor_Task",
- external_dag_id="First",
+ external_dag_id="first",
  external_task_id="first_task",
  execution_delta = timedelta(minutes=10),
  timeout=300,
