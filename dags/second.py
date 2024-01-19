@@ -20,6 +20,6 @@ ExternalTaskSensor(
  task_id="Ext_Sensor_Task",
  external_dag_id="first",
  external_task_id="first_task",
- execution_delta = timedelta(minutes=10),
+ # execution_delta = timedelta(minutes=10),
  timeout=300,
  dag=dag)>>Second_Task
