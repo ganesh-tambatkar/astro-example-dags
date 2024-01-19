@@ -6,7 +6,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 args = {"owner": "airflow", "start_date": airflow.utils.dates.days_ago(1)}
 dag = DAG(
- dag_id="first", default_args=args, schedule_interval="30 12 * * *"
+ dag_id="first", default_args=args, schedule_interval="28 7 * * *"
 )
 def pp():
  print("First Primary Task")
