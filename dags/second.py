@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 args = {“owner”: “airflow”, “start_date”: airflow.utils.dates.days_ago(1)}
+
 dag = DAG(
  dag_id=”Second”, default_args=args, schedule_interval=’55 06 * * *’
 )
