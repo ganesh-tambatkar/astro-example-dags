@@ -12,14 +12,14 @@ dag = DAG(
  dag_id="Second", default_args=args, schedule_interval="55 06 * * *"
 )
 def pp():
- print(‘Second Dependent Task’)
+ print("Second Dependent Task")
  
 with dag:
  Second_Task=PythonOperator(task_id="Second_Task", python_callable=pp,dag=dag)
 ExternalTaskSensor(
- task_id=’Ext_Sensor_Task’,
- external_dag_id=’First’,
- external_task_id=’first_task’,
+ task_id="Ext_Sensor_Task",
+ external_dag_id="First",
+ external_task_id="first_task",
  execution_delta = timedelta(minutes=10),
  timeout=300,
  dag=dag)>>Second_Task
