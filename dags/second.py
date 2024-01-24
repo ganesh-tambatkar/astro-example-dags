@@ -21,7 +21,7 @@ def get_date():
   @provide_session
   def execution_date_fn(session=None,  **kwargs):
    return datetime.now()
-  execution_date_fn
+  return execution_date_fn
  
 with dag:
  Second_Task=PythonOperator(task_id="Second_Task", python_callable=pp,dag=dag)
