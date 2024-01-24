@@ -13,7 +13,7 @@ dag = DAG(
 )
 def pp():
  print("Second Dependent Task")
- print(timedelta)
+ print(timedelta(minutes=10))
  
 with dag:
  Second_Task=PythonOperator(task_id="Second_Task", python_callable=pp,dag=dag)
