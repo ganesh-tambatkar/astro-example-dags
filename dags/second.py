@@ -4,6 +4,8 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.sensors.external_task_sensor import ExternalTaskSensor
 from datetime import datetime, timedelta, date
+from airflow.utils.session import provide_session
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 args = {"owner": "airflow", "start_date": airflow.utils.dates.days_ago(1)}
