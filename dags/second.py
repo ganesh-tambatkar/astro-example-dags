@@ -16,7 +16,10 @@ def pp():
  print(timedelta(minutes=10))
 
 def get_date():
- return datetime.now()
+  @provide_session
+  def execution_date_fn(exec_date, session=None,  **kwargs):
+   return datetime.now()
+  execution_date_fn()
  
 with dag:
  Second_Task=PythonOperator(task_id="Second_Task", python_callable=pp,dag=dag)
