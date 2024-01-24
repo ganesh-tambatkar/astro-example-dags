@@ -3,7 +3,7 @@ import airflow
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.sensors.external_task_sensor import ExternalTaskSensor
-from datetime import datetime, timedelta, date
+from datetime import datetime, timedelta, date, timezone
 from airflow.utils.session import provide_session
 
 logging.basicConfig(level=logging.INFO)
@@ -20,7 +20,7 @@ def pp():
 def get_date():
   @provide_session
   def execution_date_fn(session=None,  **kwargs):
-   return datetime.now()
+   return datetime.now(timezone.utc)
   return execution_date_fn
  
 with dag:
