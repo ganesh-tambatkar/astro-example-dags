@@ -19,7 +19,7 @@ def pp():
 
 def get_date():
   @provide_session
-  def execution_date_fn(exec_date, session=None,  **kwargs):
+  def execution_date_fn(session=None,  **kwargs):
    return datetime.now()
   execution_date_fn()
  
