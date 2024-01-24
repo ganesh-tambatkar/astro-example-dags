@@ -25,6 +25,6 @@ ExternalTaskSensor(
  external_dag_id="first",
  external_task_id="first_task",
  # execution_delta = datetime.now(),
- execution_date_fn = get_date()
+ execution_date_fn = get_date(),
  timeout=300,
  dag=dag)>>Second_Task
