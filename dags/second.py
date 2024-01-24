@@ -14,6 +14,9 @@ dag = DAG(
 def pp():
  print("Second Dependent Task")
  print(timedelta(minutes=10))
+
+def get_date():
+ return datetime.now()
  
 with dag:
  Second_Task=PythonOperator(task_id="Second_Task", python_callable=pp,dag=dag)
@@ -22,6 +25,6 @@ ExternalTaskSensor(
  external_dag_id="first",
  external_task_id="first_task",
  # execution_delta = datetime.now(),
- execution_date_fn = datetime.now()
+ execution_date_fn = get_date()
  timeout=300,
  dag=dag)>>Second_Task
